@@ -28,10 +28,10 @@ impl<'a> UserRepo<'a> {
             LEFT JOIN djpt.chara_view c
               ON c.id = u.cid
             ORDER BY u.id
-            "#
+            "#,
         )
-            .fetch_all(self.pool)
-            .await?;
+        .fetch_all(self.pool)
+        .await?;
 
         Ok(users)
     }

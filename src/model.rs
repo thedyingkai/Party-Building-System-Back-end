@@ -10,13 +10,25 @@ pub struct ResultWrapper<T> {
 
 impl<T> ResultWrapper<T> {
     pub fn ok(data: T) -> Self {
-        Self { code: "200".to_string(), msg: "请求成功".to_string(), data: Some(data) }
+        Self {
+            code: "200".to_string(),
+            msg: "请求成功".to_string(),
+            data: Some(data),
+        }
     }
     pub fn ok_msg(msg: &str) -> Self {
-        Self { code: "200".to_string(), msg: msg.to_string(), data: None }
+        Self {
+            code: "200".to_string(),
+            msg: msg.to_string(),
+            data: None,
+        }
     }
     pub fn err(code: String, msg: String) -> Self {
-        Self { code, msg, data: None }
+        Self {
+            code,
+            msg,
+            data: None,
+        }
     }
 }
 
@@ -26,7 +38,7 @@ pub struct Page<T> {
     pub list: Vec<T>,
 }
 
-#[derive(Debug, Serialize, Deserialize, FromRow)]
+#[derive(Debug, Serialize, Deserialize, FromRow, Clone)]
 pub struct UserDto {
     pub user_id: i64,
     pub user_name: String,

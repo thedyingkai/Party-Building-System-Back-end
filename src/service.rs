@@ -9,7 +9,9 @@ pub struct UserService<'a> {
 
 impl<'a> UserService<'a> {
     pub fn new(pool: &'a PgPool) -> Self {
-        Self { repo: UserRepo::new(pool) }
+        Self {
+            repo: UserRepo::new(pool),
+        }
     }
 
     pub async fn list_users(&self) -> AppResult<Vec<UserDto>> {
